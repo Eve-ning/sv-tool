@@ -1,10 +1,8 @@
-## manialib
+# manialib
 This is where all of the supporting functions go
-If you do use these files somewhere else give me a heads up here or on osu! (Evening)
+If you do use these files somewhere else give me a heads up here or on osu! Evening
 
 ## Functions
-
-# Legends:
 
 - C: Code
 - V: Value
@@ -86,9 +84,9 @@ If you do use these files somewhere else give me a heads up here or on osu! (Eve
 - Initiates a MULTIPLE timing point prompt and returns a vector double  
 - Input (Int) Number of Inputs  
 - Return (VDouble) Offset, (VDouble) Code, (VString) Extension  
-
-##Files
-
+  
+## Files  
+  
 **Input.cpp & Input.h**
 
 - These files contain the functions that require input
