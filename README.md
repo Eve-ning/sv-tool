@@ -16,10 +16,11 @@ Possibly coming soon
 
 Progress:
 - [x] manialib
-- [ ] stutter
+- [x] stutter
 - [ ] copier
 - [ ] measure-lines
 - [ ] false
 - [ ] sine
 - [ ] normalizer
 - [ ] flooring
+- [ ] Finalization (Open for Pulls)
