@@ -99,7 +99,7 @@ If you do use these files somewhere else give me a heads up here or on osu! Even
 
 - These files contain the functions that compile parameters into working .osu format
 
-**Calibrator.cpp & Calibrator.h**
+**CALIBRATOR.cpp & CALIBRATOR.h**
 
 - These files is meant to test or calibrate the functions, checking if they are working correctly
 - CALIBRATOR_0 Calibrates non-input functions; CALIBRATOR_I Calibrates input functions
