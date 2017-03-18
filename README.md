@@ -8,8 +8,9 @@ Aim:
 The main purpose of the SV tool is to help coordinate and simplify SV Additions
 It may also help in generation of notes in future builds
 
-Description/Guide:
+Outdated Description/Guide:
 https://docs.google.com/document/d/1OR2FX8MqANiqEu7k-RzwTtqMrly259ljTYsVbvu0d64/
+The release in the document isn't up to date with this repo
 
 Video Guide:
 Possibly coming soon
