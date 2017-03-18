@@ -21,9 +21,9 @@ public:
 	void Compiler_NL(int, int, double, double, std::string = ":0:0:0:0:");
 
 	//Compiles parameters into a Timing Point
-	//Input (Double) Offset, (Double) Code, (Optional String) Extension
+	//Input (Double) Offset, (Double) Code, (Bool) SV or BPM, (Optional String) Extension
 	//Return NIL
-	void Compiler_T(double, double, std::string = "4,2,0,15,1,0");
+	void Compiler_T(double, double, bool, std::string = NULL);
 
 };
 

@@ -79,7 +79,7 @@ void Compiler::Compiler_NL(int key_No, int key, double offset, double offset2, s
 //Compiles parameters into a Timing Point
 //Input (Double) Offset, (Double) Code, (Optional String) Extension
 //Return NIL
-void Compiler::Compiler_T(double offset, double code, std::string extension)
+void Compiler::Compiler_T(double offset, double code, bool type, std::string extension)
 {
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Compiler_T" << std::endl;
@@ -89,7 +89,16 @@ void Compiler::Compiler_T(double offset, double code, std::string extension)
 		std::cout << "[DEBUG] Using Default Extension (4,2,0,15,1,0)" << std::endl;
 	}
 
+	if (type == true) {
+		extension = "4,2,0,15,0,0";
+	}
+	else {
+		extension = "4,2,0,15,1,0";
+	}
+
 	//Printing out the compiled timing point
 	std::cout << offset << "," << code << "," << extension << std::endl;
+
+	//"4,2,0,15,1,0"
 
 }
