@@ -12,3 +12,13 @@ https://docs.google.com/document/d/1OR2FX8MqANiqEu7k-RzwTtqMrly259ljTYsVbvu0d64/
 
 Video Guide:
 Possibly coming soon
+
+Progress:
+- [x] manialib
+- [ ] stutter
+- [ ] copier
+- [ ] measure-lines
+- [ ] false
+- [ ] sine
+- [ ] normalizer
+- [ ] flooring
