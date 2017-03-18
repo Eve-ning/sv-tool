@@ -1,6 +1,8 @@
 # sv-tool
 SV Tool Development
 
+Pending Space to be used for development, will probably upload the files once I have functions working.
+
 Aim:
 The main purpose of the SV tool is to help coordinate and simplify SV Additions
 It may also help in generation of notes in future builds
