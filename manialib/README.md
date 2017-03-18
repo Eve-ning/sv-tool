@@ -112,3 +112,9 @@ If you do use these files somewhere else give me a heads up here or on osu! Even
 
 - Example file that is tuned to calibrate when ran
 
+# To be done/Known Issues
+
+- [ ] Add Overlapping Functionality to Input.cpp
+- [ ] Compiler's default extension is BPM, will need to add bool for SV and BPM
+- [ ] Finalization
+
