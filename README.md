@@ -15,7 +15,7 @@ Progress:
 - [x] measure-lines
 - [x] false
 - [ ] sine
-- [ ] normalizer
+- [x] normalizer
 - [ ] flooring
 - [ ] Wiki Writeup
 - [ ] Video Guides
