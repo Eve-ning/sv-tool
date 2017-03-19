@@ -1,10 +1,10 @@
-#include "Stutter.h"
+#include "False.h"
 #include "DEBUG.h"
 
-//Initiates the Stutter SV program
+//Initiates the False SV program
 //Input NIL
 //Return NIL
-void Stutter::Stutter_SV()
+void False::False_SV()
 {
 
 	Input _INPUT;
@@ -13,6 +13,7 @@ void Stutter::Stutter_SV()
 	std::vector<double> offset_list;
 	std::vector<int> key_list;
 	std::vector<double> distance_list;
+	std::vector<double> false_list;
 	double threshold;
 	double average_SV;
 	double allowed_SV1;
@@ -21,6 +22,11 @@ void Stutter::Stutter_SV()
 	double max_osu_SV = 10.0;
 	double initial_SV;
 	double second_SV;
+	double false_gap;
+	double min_distance;
+	double max_distance;
+	double min_distance_fix;
+	double max_distance_fix;
 	
 	//Takes in input for an infinite amount of notes
 	std::tie(offset_list, key_list) = _INPUT.Input_N_M(100);
@@ -48,6 +54,28 @@ void Stutter::Stutter_SV()
 
 	}
 
+	//Takes in 2 note input to calculate false gap
+	std::cout << "Input the reference gap with 2 notes:" << std::endl;
+	std::tie(false_list, key_list) = _INPUT.Input_N_M(2);
+	false_gap = false_list[1] - false_list[0];
+
+	//We get the minimum and maximum values of the distance list
+	min_distance = *std::min_element(distance_list.begin(), distance_list.end());
+	max_distance = *std::max_element(distance_list.begin(), distance_list.end());
+
+	//Modifies the max_osu_sv or min_osu_sv
+	min_distance_fix = max_distance / false_gap;
+	max_distance_fix = min_distance / false_gap;
+
+	if (DEBUG == true) {
+
+		std::cout << "[DEBUG] min_distance: " << min_distance << std::endl;
+		std::cout << "[DEBUG] max_distance: " << max_distance << std::endl;
+		std::cout << "[DEBUG] min_distance_fix: " << min_distance_fix << std::endl;
+		std::cout << "[DEBUG] max_distance_fix: " << max_distance_fix << std::endl;
+
+	}
+
 	//Gets Average SV from user
 	std::cout << "Input Average SV (0.1 ~ 10.0): ";
 	std::cin >> average_SV;
@@ -61,7 +89,7 @@ void Stutter::Stutter_SV()
 		std::cin >> average_SV;
 
 	}
-	
+
 	std::cout << std::endl;
 
 	//Gets Threshold from user
@@ -81,10 +109,17 @@ void Stutter::Stutter_SV()
 	std::cout << std::endl;
 
 	//Calculates SV cases for extreme cases w.r.t. Maximum and Minimum allowable osu! SV
-	allowed_SV1 = (average_SV - (max_osu_SV * ((100 - threshold) / 100))) / (threshold / 100);
-	allowed_SV2 = (average_SV - (min_osu_SV * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_SV1 = (average_SV - (max_osu_SV * max_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_SV2 = (average_SV - (min_osu_SV * min_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
 
-	if (allowed_SV1 < 0.1){
+	if (DEBUG == true) {
+
+		std::cout << "[DEBUG] allowed_SV1: " << allowed_SV1 << std::endl;
+		std::cout << "[DEBUG] allowed_SV2: " << allowed_SV2 << std::endl;
+
+	}
+
+	if (allowed_SV1 < 0.1) {
 		allowed_SV1 = 0.1;
 	}
 	if (allowed_SV1 > 10.0) {
@@ -101,7 +136,7 @@ void Stutter::Stutter_SV()
 	std::cout << "Input Initial SV [" << ((allowed_SV1 < allowed_SV2) ? allowed_SV1 : allowed_SV2) << " ~ " << ((allowed_SV1 > allowed_SV2) ? allowed_SV1 : allowed_SV2) << "]: ";
 	std::cin >> initial_SV;
 
-	while (initial_SV < ((allowed_SV1 < allowed_SV2) ? allowed_SV1 : allowed_SV2) || initial_SV > ((allowed_SV1 > allowed_SV2) ? allowed_SV1 : allowed_SV2) || std::cin.fail()) {
+	while (initial_SV < ((allowed_SV1 < allowed_SV2) ? allowed_SV1 : allowed_SV2) || initial_SV >((allowed_SV1 > allowed_SV2) ? allowed_SV1 : allowed_SV2) || std::cin.fail()) {
 
 		std::cin.clear();
 		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
@@ -114,14 +149,14 @@ void Stutter::Stutter_SV()
 	std::cout << std::endl;
 
 	//Calculates Second SV
-	second_SV = (1 - (initial_SV * (threshold / 100))) / ((100 - threshold) / 100);	
+	second_SV = (1 - (initial_SV * (threshold / 100))) / ((100 - threshold) / 100);
 	std::cout << "[Generating Code]" << std::endl;
 
 	//Compiles and Generates Code
 	for (unsigned int x = 0; x < (offset_list_size - 1); x++) {
 
-		_COMPILER.Compiler_T(offset_list[x], _CONVERTER.SV_VtoC(initial_SV), true);
-		_COMPILER.Compiler_T((offset_list[x] + (distance_list[x] * (threshold / 100))), _CONVERTER.SV_VtoC(second_SV), true);
+		_COMPILER.Compiler_T(offset_list[x], _CONVERTER.SV_VtoC(initial_SV * (false_gap / distance_list[x])), true);
+		_COMPILER.Compiler_T((offset_list[x] + (distance_list[x] * (threshold / 100))), _CONVERTER.SV_VtoC(second_SV * (false_gap / distance_list[x])), true);
 
 	}
 
@@ -129,10 +164,10 @@ void Stutter::Stutter_SV()
 
 }
 
-//Initiates the Stutter BPM program
+//Initiates the False BPM program
 //Input NIL
 //Return NIL
-void Stutter::Stutter_BPM()
+void False::False_BPM()
 {
 
 	Input _INPUT;
@@ -141,6 +176,7 @@ void Stutter::Stutter_BPM()
 	std::vector<double> offset_list;
 	std::vector<int> key_list;
 	std::vector<double> distance_list;
+	std::vector<double> false_list;
 	double threshold;
 	double average_BPM;
 	double allowed_BPM1;
@@ -149,6 +185,12 @@ void Stutter::Stutter_BPM()
 	double max_osu_BPM = 1000000.0;
 	double initial_BPM;
 	double second_BPM;
+	double false_gap;
+	double min_distance;
+	double max_distance;
+	double min_distance_fix;
+	double max_distance_fix;
+	
 
 	//Takes in input for an infinite amount of notes
 	std::tie(offset_list, key_list) = _INPUT.Input_N_M(100);
@@ -174,6 +216,23 @@ void Stutter::Stutter_BPM()
 		}
 
 	}
+
+	std::cout << std::endl;
+
+	//Takes in 2 note input to calculate false gap
+	std::cout << "Input the reference gap with 2 notes:" << std::endl;
+	std::tie(false_list, key_list) = _INPUT.Input_N_M(2);
+	false_gap = false_list[1] - false_list[0];
+
+	//We get the minimum and maximum values of the distance list
+	min_distance = *std::min_element(distance_list.begin(), distance_list.end());
+	max_distance = *std::max_element(distance_list.begin(), distance_list.end());
+
+	//Modifies the max_osu_sv or min_osu_sv
+	min_distance_fix = max_distance / false_gap;
+	max_distance_fix = min_distance / false_gap;
+
+	std::cout << std::endl;
 
 	//Gets Average BPM from user
 	std::cout << "Input Average BPM (0 ~ *): ";
@@ -208,8 +267,8 @@ void Stutter::Stutter_BPM()
 	std::cout << std::endl;
 
 	//Calculates BPM cases for extreme cases w.r.t. Maximum and Minimum allowable osu! SV
-	allowed_BPM1 = (average_BPM - (max_osu_BPM * ((100 - threshold) / 100))) / (threshold / 100);
-	allowed_BPM2 = (average_BPM - (min_osu_BPM * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_BPM1 = (average_BPM - (max_osu_BPM * max_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_BPM2 = (average_BPM - (min_osu_BPM * min_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
 
 	if (allowed_BPM1 < 0.001) {
 		allowed_BPM1 = 0.001;
@@ -247,8 +306,8 @@ void Stutter::Stutter_BPM()
 	//Compiles and Generates Code
 	for (unsigned int x = 0; x < (offset_list_size - 1); x++) {
 
-		_COMPILER.Compiler_T(offset_list[x], _CONVERTER.BPM_VtoC(initial_BPM), false);
-		_COMPILER.Compiler_T((offset_list[x] + (distance_list[x] * (threshold / 100))), _CONVERTER.BPM_VtoC(second_BPM), false);
+		_COMPILER.Compiler_T(offset_list[x], _CONVERTER.BPM_VtoC(initial_BPM * (false_gap / distance_list[x])), false);
+		_COMPILER.Compiler_T((offset_list[x] + (distance_list[x] * (threshold / 100))), _CONVERTER.BPM_VtoC(second_BPM * (false_gap / distance_list[x])), false);
 
 	}
 
