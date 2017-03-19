@@ -2,18 +2,11 @@
 SV Tool Development 
 Language: C++
 
-Pending Space to be used for development, will probably upload the files once I have functions working.
-
-Aim:
-The main purpose of the SV tool is to help coordinate and simplify SV Additions
-It may also help in generation of notes in future builds
+### The main purpose of the SV tool is to help coordinate and simplify SV Additions
 
 Outdated Description/Guide:
 https://docs.google.com/document/d/1OR2FX8MqANiqEu7k-RzwTtqMrly259ljTYsVbvu0d64/
 The release in the document isn't up to date with this repo
-
-Video Guide:
-Possibly coming soon
 
 Progress:
 - [x] manialib
@@ -24,4 +17,6 @@ Progress:
 - [ ] sine
 - [ ] normalizer
 - [ ] flooring
+- [ ] Wiki Writeup
+- [ ] Video Guides
 - [ ] Finalization (Open for Pulls)
