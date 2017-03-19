@@ -29,7 +29,7 @@ void CALIBRATOR::CALIBRATOR_0()
 	std::cout << std::endl;
 
 	std::cout << "[CALIBRATION _COMPILER.Compiler_T]" << std::endl << "[4,2,4,2,0,15,1,0]" << std::endl << std::endl;
-	_COMPILER_CAL.Compiler_T(4,2);
+	_COMPILER_CAL.Compiler_T(4,2,false);
 	std::cout << std::endl;
 
 }

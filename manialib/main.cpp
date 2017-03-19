@@ -18,21 +18,42 @@
 #include "Compiler.h"
 #include "Input.h"
 #include "CALIBRATOR.h"
+#include "CALIBRATORF.h"
+#include "Stutter.h"
 
 //MAIN_PAUSE SETTINGS
 auto MAIN_PAUSE = NULL;
 
+//CALIBRATION TOGGLE
+bool CALIBRATION = false;
+
+/*
+Notes:
+
+	Compiler doesn't change the extension according to type
+	stutterbpm returns negative for some reason
+
+*/
+
 int main() {
 
-	Converter _CONVERTER;
-	Compiler _COMPILERS;
-	Input _INPUT;
 	CALIBRATOR _CALIBRATOR;
 
-	_CALIBRATOR.CALIBRATOR_0();
-	std::cout << std::endl;
+	if (CALIBRATION == true) {
+
+		CALIBRATOR _CALIBRATOR;
+
+		_CALIBRATOR.CALIBRATOR_0();
+		std::cout << std::endl;
+		_CALIBRATOR.CALIBRATOR_I();
+
+	}
+
 	_CALIBRATOR.CALIBRATOR_I();
 
+	/*Stutter _STUTTER;
+
+	_STUTTER.Stutter_BPM();*/
 
 	std::cout << "Enter anything to Exit...";
 	std::cin >> MAIN_PAUSE;

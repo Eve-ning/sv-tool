@@ -92,6 +92,7 @@ std::tuple<std::vector<double>, std::vector<int>> Input::Input_N_M(unsigned int 
 	std::vector<int>input_key_list;
 	double input_offset;
 	double input_key;
+	double input_buffer = NULL;
 
 	if (count > 99) {
 		std::cout << "Input Note (*): ";
@@ -139,7 +140,14 @@ std::tuple<std::vector<double>, std::vector<int>> Input::Input_N_M(unsigned int 
 			//menu
 		}
 
-		input_offset_list.push_back(input_offset);
+		//This prevents duplicate offsets
+		if (input_offset != input_buffer) {
+
+			input_offset_list.push_back(input_offset);
+
+		}
+
+		input_buffer = input_offset;
 		input_key_list.push_back(input_key);
 
 		//----------------DEBUG----------------//
