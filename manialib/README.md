@@ -114,7 +114,7 @@ If you do use these files somewhere else give me a heads up here or on osu! Even
 
 # To be done/Known Issues
 
-- [ ] Add Overlapping Functionality to Input.cpp
-- [ ] Compiler's default extension is BPM, will need to add bool for SV and BPM
+- [x] Add Overlapping Functionality to Input.cpp
+- [x] Compiler's default extension is BPM, will need to add bool for SV and BPM
 - [ ] Finalization
 
