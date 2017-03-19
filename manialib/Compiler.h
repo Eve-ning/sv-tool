@@ -23,7 +23,7 @@ public:
 	//Compiles parameters into a Timing Point
 	//Input (Double) Offset, (Double) Code, (Bool) SV or BPM, (Optional String) Extension
 	//Return NIL
-	void Compiler_T(double, double, bool, std::string = NULL);
+	void Compiler_T(double, double, bool, std::string = "DEFAULT");
 
 };
 

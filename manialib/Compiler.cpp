@@ -21,9 +21,6 @@ void Compiler::Compiler_NN(int key_No, int key, double offset, std::string exten
 
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Key Gap Value: " << keyGap << std::endl;
-	}
-
-	if (DEBUG == true) {
 		std::cout << "[DEBUG] Key Code Value: " << keyCode << std::endl;
 	}
 
@@ -59,9 +56,6 @@ void Compiler::Compiler_NL(int key_No, int key, double offset, double offset2, s
 
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Key Gap Value: " << keyGap << std::endl;
-	}
-
-	if (DEBUG == true) {
 		std::cout << "[DEBUG] Key Code Value: " << keyCode << std::endl;
 	}
 
@@ -81,23 +75,30 @@ void Compiler::Compiler_NL(int key_No, int key, double offset, double offset2, s
 //Return NIL
 void Compiler::Compiler_T(double offset, double code, bool type, std::string extension)
 {
+
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Compiler_T" << std::endl;
 	}
+	
+	std::string extension_copy = extension;
 
-	if ((DEBUG == true) && (extension == "4,2,0,15,1,0")) {
-		std::cout << "[DEBUG] Using Default Extension (4,2,0,15,1,0)" << std::endl;
-	}
+	if (extension_copy == "DEFAULT") {	
 
-	if (type == true) {
-		extension = "4,2,0,15,0,0";
-	}
-	else {
-		extension = "4,2,0,15,1,0";
+		if (DEBUG == true) {
+			std::cout << "[DEBUG] Using Default Extensions" << std::endl;
+		}
+
+		if (type == true) {
+			extension_copy = "4,2,0,15,0,0";
+		}
+		else {
+			extension_copy = "4,2,0,15,1,0";
+		}
+
 	}
 
 	//Printing out the compiled timing point
-	std::cout << offset << "," << code << "," << extension << std::endl;
+	std::cout << offset << "," << code << "," << extension_copy << std::endl;
 
 	//"4,2,0,15,1,0"
 

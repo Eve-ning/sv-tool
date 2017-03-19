@@ -9,6 +9,6 @@ This can be used for other global variables too
 #ifndef DEBUG_H
 #define DEBUG_H
 
-static bool DEBUG = true;
+static bool DEBUG = false;
 
 #endif // !DEBUG_H

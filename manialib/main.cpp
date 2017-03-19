@@ -25,36 +25,25 @@
 auto MAIN_PAUSE = NULL;
 
 //CALIBRATION TOGGLE
-bool CALIBRATION = false;
+bool CALIBRATION = true;
 
 /*
-Notes:
+Add a menu that takes in an enum input if a program encounters an error that can't be fixed*/
 
-	Compiler doesn't change the extension according to type
-	stutterbpm returns negative for some reason
+int main() {	
 
-*/
+	if (CALIBRATION == true){
 
-int main() {
-
-	CALIBRATOR _CALIBRATOR;
-
-	if (CALIBRATION == true) {
-
+		CALIBRATORF _CALIBRATORF;
 		CALIBRATOR _CALIBRATOR;
 
-		_CALIBRATOR.CALIBRATOR_0();
-		std::cout << std::endl;
-		_CALIBRATOR.CALIBRATOR_I();
+		_CALIBRATOR.CALIBRATOR_0(false, false);
+		_CALIBRATOR.CALIBRATOR_I(false);
+		_CALIBRATORF.CALIBRATORF_I(false, false, true);
 
 	}
 
-	_CALIBRATOR.CALIBRATOR_I();
-
-	/*Stutter _STUTTER;
-
-	_STUTTER.Stutter_BPM();*/
-
 	std::cout << "Enter anything to Exit...";
 	std::cin >> MAIN_PAUSE;
+
 }

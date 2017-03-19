@@ -18,17 +18,22 @@ class CALIBRATOR {
 public:
 
 	//CALIBRATOR_0 is the Calibrator for non-input functions
-	void CALIBRATOR_0();
+	//Input (Bool) Calibrate Converter, (Bool) Calibrate Compiler
+	void CALIBRATOR_0(bool, bool);
 
 	//CALIBRATOR_I is the Calibrator for input functions
-	void CALIBRATOR_I();
+	//Input (Bool) Calibrate Input
+	void CALIBRATOR_I(bool);
 
 private:
 
-	Converter _Converter_CAL;
+	bool COMPILER_B;
+	bool CONVERTER_B;
+	bool INPUT_B;
+
+	Converter _CONVERTER_CAL;
 	Compiler _COMPILER_CAL;
 	Input _INPUT_CAL;
-
 
 };
 
