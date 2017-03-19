@@ -1,6 +1,6 @@
 #include "CALIBRATORF.h"
 
-void CALIBRATORF::CALIBRATORF_I(bool STUTTER_B, bool COPIER_B, bool FALSE_B, bool MEASURELINE_B)
+void CALIBRATORF::CALIBRATORF_I(bool STUTTER_B, bool COPIER_B, bool FALSE_B, bool MEASURELINE_B, bool NORMALIZER_B, bool SINE_B)
 {
 
 	std::cout << "[CALIBRATIONF_I]" << std::endl;
@@ -77,5 +77,24 @@ void CALIBRATORF::CALIBRATORF_I(bool STUTTER_B, bool COPIER_B, bool FALSE_B, boo
 
 		_MEASURELINE_CAL._MeasureLine();
 
+	}
+	else {
+		std::cout << "[CALIBRATION SKIPPING MEASURELINE]" << std::endl;
+	}
+
+	if (NORMALIZER_B == true) {
+
+		std::cout << "[CALIBRATION _NORMALIZER_CAL._Normalizer]" << std::endl <<
+			"1000,600,4,2,0,5,1,0" << std::endl <<
+			"2000,300,4,2,0,5,1,0" << std::endl <<
+			"3000,200,4,2,0,5,1,0" << std::endl <<
+			"STOP" << std::endl <<
+			"100" << std::endl << std::endl;
+
+		_NORMALIZER_CAL._Normalizer();
+
+	}
+	else {
+		std::cout << "[CALIBRATION SKIPPING NORMALIZER]" << std::endl;
 	}
 }

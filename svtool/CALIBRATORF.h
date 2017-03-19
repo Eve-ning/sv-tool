@@ -14,8 +14,8 @@ class CALIBRATORF {
 public:
 
 	//CALIBRATORF_I is the Calibrator for input functions
-	//Input (Bool) Stutter, (Bool) Copier, (Bool) False, (Bool) MeasureLine
-	void CALIBRATORF_I(bool, bool, bool, bool);
+	//Input (Bool) Stutter, (Bool) Copier, (Bool) False, (Bool) MeasureLine, (Bool) Normalizer, (Bool) Sine
+	void CALIBRATORF_I(bool, bool, bool, bool, bool, bool);
 
 private:
 
@@ -23,6 +23,8 @@ private:
 	Copier _COPIER_CAL;
 	False _FALSE_CAL;
 	MeasureLine _MEASURELINE_CAL;
+	Normalizer _NORMALIZER_CAL;
+	Sine _SINE_CAL;
 
 };
 
