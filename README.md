@@ -12,7 +12,7 @@ Progress:
 - [x] manialib
 - [x] stutter
 - [x] copier
-- [ ] measure-lines
+- [x] measure-lines
 - [x] false
 - [ ] sine
 - [ ] normalizer
