@@ -6,6 +6,7 @@ void Normalizer::_Normalizer()
 	Input _INPUT;
 	Compiler _COMPILER;
 	Converter _CONVERTER;
+	Input_Validator _INPUT_VALIDATOR;
 	std::vector<double> timingpoint_offset;
 	std::vector<double> timingpoint_code;
 	std::vector<std::string> timingpoint_extension;
@@ -18,8 +19,8 @@ void Normalizer::_Normalizer()
 	std::cout << std::endl;
 
 	//Prompts for BPM to normalize to
-	std::cout << "Input BPM to Normalize to: ";
-	std::cin >> BPM;
+	std::cout << "Input BPM to Normalize to ";
+	BPM = _INPUT_VALIDATOR.Input_Value_D(0, 100000, false);
 
 	std::cout << std::endl;
 

@@ -6,6 +6,7 @@ void MeasureLine::_MeasureLine()
 	Input _INPUT;
 	Compiler _COMPILER;
 	Converter _CONVERTER;
+	Input_Validator _INPUT_VALIDATOR;
 	std::vector<double> offset_list;
 	std::vector<int> key_list;
 	double gap;
@@ -28,8 +29,8 @@ void MeasureLine::_MeasureLine()
 	}
 
 	//Prompts for gap between Measure Line
-	std::cout << "Input the ms gap between each timing point: ";
-	std::cin >> gap;
+	std::cout << "Input the ms gap between each timing point ";
+	gap = _INPUT_VALIDATOR.Input_Value_D(0, 100000, false);
 
 	//Prompts for timing point to repeat
 	std::cout << "Input the Timing Point to be replicated:" << std::endl;

@@ -10,6 +10,7 @@ void False::False_SV()
 	Input _INPUT;
 	Compiler _COMPILER;
 	Converter _CONVERTER;
+	Input_Validator _INPUT_VALIDATOR;
 	std::vector<double> offset_list;
 	std::vector<int> key_list;
 	std::vector<double> distance_list;
@@ -77,34 +78,14 @@ void False::False_SV()
 	}
 
 	//Gets Average SV from user
-	std::cout << "Input Average SV (0.1 ~ 10.0): ";
-	std::cin >> average_SV;
-
-	while (average_SV <= 0.1 || average_SV >= 10 || std::cin.fail()) {
-
-		std::cin.clear();
-		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
-		average_SV = NULL;
-		std::cout << "Try again: ";
-		std::cin >> average_SV;
-
-	}
+	std::cout << "Input Average SV ";
+	average_SV = _INPUT_VALIDATOR.Input_Value_D(0.1, 10.0, false);
 
 	std::cout << std::endl;
 
 	//Gets Threshold from user
-	std::cout << "Input Threshold (0 ~ 100): ";
-	std::cin >> threshold;
-
-	while (threshold <= 0 || threshold >= 100 || std::cin.fail()) {
-
-		std::cin.clear();
-		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
-		threshold = NULL;
-		std::cout << "Try again: ";
-		std::cin >> threshold;
-
-	}
+	std::cout << "Input Threshold ";
+	threshold = _INPUT_VALIDATOR.Input_Value_D(0, 100, false);
 
 	std::cout << std::endl;
 
@@ -133,18 +114,8 @@ void False::False_SV()
 	}
 
 	//Gets Initial SV from user
-	std::cout << "Input Initial SV [" << ((allowed_SV1 < allowed_SV2) ? allowed_SV1 : allowed_SV2) << " ~ " << ((allowed_SV1 > allowed_SV2) ? allowed_SV1 : allowed_SV2) << "]: ";
-	std::cin >> initial_SV;
-
-	while (initial_SV < ((allowed_SV1 < allowed_SV2) ? allowed_SV1 : allowed_SV2) || initial_SV >((allowed_SV1 > allowed_SV2) ? allowed_SV1 : allowed_SV2) || std::cin.fail()) {
-
-		std::cin.clear();
-		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
-		initial_SV = NULL;
-		std::cout << "Try again: ";
-		std::cin >> initial_SV;
-
-	}
+	std::cout << "Input Initial SV ";
+	initial_SV = _INPUT_VALIDATOR.Input_Value_D(((allowed_SV1 < allowed_SV2) ? allowed_SV1 : allowed_SV2), ((allowed_SV1 > allowed_SV2) ? allowed_SV1 : allowed_SV2), true);
 
 	std::cout << std::endl;
 
@@ -173,6 +144,7 @@ void False::False_BPM()
 	Input _INPUT;
 	Compiler _COMPILER;
 	Converter _CONVERTER;
+	Input_Validator _INPUT_VALIDATOR;
 	std::vector<double> offset_list;
 	std::vector<int> key_list;
 	std::vector<double> distance_list;
@@ -235,34 +207,14 @@ void False::False_BPM()
 	std::cout << std::endl;
 
 	//Gets Average BPM from user
-	std::cout << "Input Average BPM (0 ~ *): ";
-	std::cin >> average_BPM;
-
-	while (average_BPM <= 0 || std::cin.fail()) {
-
-		std::cin.clear();
-		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
-		average_BPM = NULL;
-		std::cout << "Try again: ";
-		std::cin >> average_BPM;
-
-	}
+	std::cout << "Input Average BPM ";
+	average_BPM = _INPUT_VALIDATOR.Input_Value_D(0, 100000, false);
 
 	std::cout << std::endl;
 
 	//Gets Threshold from user
-	std::cout << "Input Threshold (0 ~ 100): ";
-	std::cin >> threshold;
-
-	while (threshold <= 0 || threshold >= 100 || std::cin.fail()) {
-
-		std::cin.clear();
-		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
-		threshold = NULL;
-		std::cout << "Try again: ";
-		std::cin >> threshold;
-
-	}
+	std::cout << "Input Threshold ";
+	threshold = _INPUT_VALIDATOR.Input_Value_D(0, 100, false);
 
 	std::cout << std::endl;
 
@@ -284,18 +236,8 @@ void False::False_BPM()
 	}
 
 	//Gets Initial BPM from user
-	std::cout << "Input Initial BPM [" << ((allowed_BPM1 < allowed_BPM2) ? allowed_BPM1 : allowed_BPM2) << " ~ " << ((allowed_BPM1 > allowed_BPM2) ? allowed_BPM1 : allowed_BPM2) << "]: ";
-	std::cin >> initial_BPM;
-
-	while (initial_BPM < ((allowed_BPM1 < allowed_BPM2) ? allowed_BPM1 : allowed_BPM2) || initial_BPM >((allowed_BPM1 > allowed_BPM2) ? allowed_BPM1 : allowed_BPM2) || std::cin.fail()) {
-
-		std::cin.clear();
-		std::cout << "[ERROR] Input wasn't in range/isn't a number" << std::endl;
-		initial_BPM = NULL;
-		std::cout << "Try again: ";
-		std::cin >> initial_BPM;
-
-	}
+	std::cout << "Input Initial BPM ";
+	initial_BPM = _INPUT_VALIDATOR.Input_Value_D(((allowed_BPM1 < allowed_BPM2) ? allowed_BPM1 : allowed_BPM2), ((allowed_BPM1 > allowed_BPM2) ? allowed_BPM1 : allowed_BPM2), true);
 
 	std::cout << std::endl;
 

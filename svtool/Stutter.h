@@ -7,6 +7,7 @@
 #include "Converter.h"
 #include "Compiler.h"
 #include "Input.h"
+#include "Input_Validator.h"
 
 class Stutter {
 
