@@ -27,10 +27,6 @@ public:
 
 private:
 
-	bool COMPILER_B;
-	bool CONVERTER_B;
-	bool INPUT_B;
-
 	Converter _CONVERTER_CAL;
 	Compiler _COMPILER_CAL;
 	Input _INPUT_CAL;

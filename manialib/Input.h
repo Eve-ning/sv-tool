@@ -36,6 +36,8 @@ public:
 	//Return (VDouble) Offset, (VDouble) Code, (VString) Extension
 	std::tuple<std::vector<double>, std::vector<double>, std::vector<std::string>> Input_T_M(unsigned int);
 
+	
+
 };
 
 #endif // !INPUT_H

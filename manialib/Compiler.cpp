@@ -89,9 +89,11 @@ void Compiler::Compiler_T(double offset, double code, bool type, std::string ext
 		}
 
 		if (type == true) {
+			//True: SV Extension
 			extension_copy = "4,2,0,15,0,0";
 		}
 		else {
+			//False: False Extension
 			extension_copy = "4,2,0,15,1,0";
 		}
 
