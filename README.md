@@ -14,7 +14,7 @@ Progress:
 - [x] copier
 - [x] measure-lines
 - [x] false
-- [ ] sine
+- [x] sine
 - [x] normalizer
 - [ ] flooring **!!**
 - [ ] sequencer **!!**
