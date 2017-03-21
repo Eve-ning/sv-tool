@@ -52,8 +52,9 @@ void Sine::Sine_SV()
 	amplitude = _INPUT_VALIDATOR.Input_Value_D(0, ((allowed_amplitude1 < allowed_amplitude2) ? allowed_amplitude1 : allowed_amplitude2), true);
 
 	//Takes in Intermediate Values
-	std::cout << "Input the number of Timing Points per Wavelength " << std::endl;
+	std::cout << "Input the number of Timing Points per Wavelength ";
 	intermediate_values = _INPUT_VALIDATOR.Input_Value_I(1, 100000, true);
+	std::cout << std::endl;
 
 	//Generates Code
 	std::cout << "[Generating Code]" << std::endl;
@@ -62,7 +63,7 @@ void Sine::Sine_SV()
 		for (double x = 0; x < intermediate_values; x++) {
 
 			double angle;
-			angle = (x / intermediate_values)*MATH_PI;
+			angle = (x / intermediate_values) * 2 * MATH_PI;
 
 			//Premature break if the cycle doesn't complete
 			if (((x / intermediate_values)*wavelength) >= end_offset) {
@@ -75,6 +76,8 @@ void Sine::Sine_SV()
 		}
 
 	}
+
+	std::cout << std::endl;
 
 }
 
@@ -129,8 +132,10 @@ void Sine::Sine_BPM()
 	amplitude = _INPUT_VALIDATOR.Input_Value_D(0, ((allowed_amplitude1 < allowed_amplitude2) ? allowed_amplitude1 : allowed_amplitude2), true);
 
 	//Takes in Intermediate Values
-	std::cout << "Input the number of Timing Points per Wavelength " << std::endl;
+	std::cout << "Input the number of Timing Points per Wavelength ";
 	intermediate_values = _INPUT_VALIDATOR.Input_Value_I(1, 100000, true);
+
+	std::cout << std::endl;
 
 	//Generates Code
 	std::cout << "[Generating Code]" << std::endl;
@@ -139,7 +144,7 @@ void Sine::Sine_BPM()
 		for (double x = 0; x < intermediate_values; x++) {
 
 			double angle;
-			angle = (x / intermediate_values)*MATH_PI;
+			angle = (x / intermediate_values) * 2 * MATH_PI;
 
 			//Premature break if the cycle doesn't complete
 			if (((x / intermediate_values)*wavelength) >= end_offset) {
@@ -153,6 +158,6 @@ void Sine::Sine_BPM()
 
 	}
 
-
+	std::cout << std::endl;
 
 }

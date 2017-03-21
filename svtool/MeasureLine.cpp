@@ -5,7 +5,6 @@ void MeasureLine::_MeasureLine()
 
 	Input _INPUT;
 	Compiler _COMPILER;
-	Converter _CONVERTER;
 	Input_Validator _INPUT_VALIDATOR;
 	std::vector<double> offset_list;
 	std::vector<int> key_list;
@@ -36,6 +35,9 @@ void MeasureLine::_MeasureLine()
 	std::cout << "Input the Timing Point to be replicated:" << std::endl;
 	std::tie(timingpoint_offset, timingpoint_code, timingpoint_extension) = _INPUT.Input_T_S();
 
+	std::cout << std::endl;
+
+	std::cout << "[Generating Code]" << std::endl;
 	//Generate Code
 	for (unsigned int y = 0; y < offset_list_size; y += 2) {
 
@@ -48,5 +50,7 @@ void MeasureLine::_MeasureLine()
 		//Generates a line on the end offset
 		_COMPILER.Compiler_T(offset_list[y+1], timingpoint_code, true, timingpoint_extension);
 	}
+
+	std::cout << std::endl;
 
 }

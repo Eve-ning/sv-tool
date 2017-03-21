@@ -27,8 +27,6 @@ void Stutter::Stutter_SV()
 	std::tie(offset_list, key_list) = _INPUT.Input_N_M(100);
 	unsigned int offset_list_size = offset_list.size();
 
-	std::cout << std::endl;
-
 	//Generates a list of distances between the offsets generated
 	try {
 		for (unsigned int x = 1; x < offset_list_size; x++) {
@@ -52,14 +50,10 @@ void Stutter::Stutter_SV()
 	//Gets Average SV from user
 	std::cout << "Input Average SV ";
 	average_SV = _INPUT_VALIDATOR.Input_Value_D(0.1, 10.0, false);
-	
-	std::cout << std::endl;
 
 	//Gets Threshold from user
 	std::cout << "Input Threshold ";
 	threshold = _INPUT_VALIDATOR.Input_Value_D(0, 100, false);
-
-	std::cout << std::endl;
 
 	//Calculates SV cases for extreme cases w.r.t. Maximum and Minimum allowable osu! SV
 	allowed_SV1 = (average_SV - (max_osu_SV * ((100 - threshold) / 100))) / (threshold / 100);
@@ -96,7 +90,9 @@ void Stutter::Stutter_SV()
 
 	}
 
-	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.SV_VtoC(initial_SV), true);
+	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.SV_VtoC(average_SV), true);
+
+	std::cout << std::endl;
 
 }
 
@@ -151,13 +147,9 @@ void Stutter::Stutter_BPM()
 	std::cout << "Input Average BPM ";
 	average_BPM = _INPUT_VALIDATOR.Input_Value_D(0, 100000, false);
 
-	std::cout << std::endl;
-
 	//Gets Threshold from user
 	std::cout << "Input Threshold ";
 	threshold = _INPUT_VALIDATOR.Input_Value_D(0, 100, false);
-
-	std::cout << std::endl;
 
 	//Calculates BPM cases for extreme cases w.r.t. Maximum and Minimum allowable osu! SV
 	allowed_BPM1 = (average_BPM - (max_osu_BPM * ((100 - threshold) / 100))) / (threshold / 100);
@@ -194,6 +186,8 @@ void Stutter::Stutter_BPM()
 
 	}
 
-	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.BPM_VtoC(initial_BPM), false);
+	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.BPM_VtoC(average_BPM), false);
+
+	std::cout << std::endl;
 
 }

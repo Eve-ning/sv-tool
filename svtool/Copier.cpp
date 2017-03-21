@@ -9,7 +9,6 @@ void Copier::_Copier()
 
 	Input _INPUT;
 	Compiler _COMPILER;
-	Converter _CONVERTER;
 
 	std::vector<double> note_offset_list;
 	std::vector<int> note_key_list;
@@ -19,6 +18,8 @@ void Copier::_Copier()
 
 	std::tie(note_offset_list,note_key_list) = _INPUT.Input_N_M(100);
 	std::tie(timingpoint_offset_list, timingpoint_code_list, timingpoint_extension_list) = _INPUT.Input_T_M(100);
+
+	std::cout << std::endl;
 
 	double timingpoint_zero = timingpoint_offset_list[0];
 
@@ -38,6 +39,8 @@ void Copier::_Copier()
 
 	}
 	
+	std::cout << "[Generating Code]" << std::endl;
+
 	for (unsigned int y = 0; y < note_offset_list_size; y++) {
 
 		for (unsigned int x = 0; x < timingpoint_offset_list_size; x++) {
@@ -48,4 +51,5 @@ void Copier::_Copier()
 
 	}
 
+	std::cout << std::endl;
 }

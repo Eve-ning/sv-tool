@@ -16,13 +16,14 @@ void Normalizer::_Normalizer()
 
 	//Takes in multiple Timing Point input
 	std::tie(timingpoint_offset, timingpoint_code, timingpoint_extension) = _INPUT.Input_T_M(100);
-	std::cout << std::endl;
 
 	//Prompts for BPM to normalize to
 	std::cout << "Input BPM to Normalize to ";
 	BPM = _INPUT_VALIDATOR.Input_Value_D(0, 100000, false);
 
 	std::cout << std::endl;
+
+	std::cout << "[Generating Code]" << std::endl;
 
 	//Code Generation
 	unsigned int timingpoint_code_size = timingpoint_code.size();
@@ -41,5 +42,7 @@ void Normalizer::_Normalizer()
 	if (out_of_range == true) {
 		std::cout << "[NOTICE] SVs generated exceeded the lower bound 0.1 or upper bound 10.0" << std::endl;
 	}
+
+	std::cout << std::endl;
 
 }

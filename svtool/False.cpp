@@ -26,14 +26,12 @@ void False::False_SV()
 	double false_gap;
 	double min_distance;
 	double max_distance;
-	double min_distance_fix;
-	double max_distance_fix;
+	double lower_distance_fix;
+	double upper_distance_fix;
 	
 	//Takes in input for an infinite amount of notes
 	std::tie(offset_list, key_list) = _INPUT.Input_N_M(100);
 	unsigned int offset_list_size = offset_list.size();
-
-	std::cout << std::endl;
 
 	//Generates a list of distances between the offsets generated
 	try {
@@ -65,15 +63,15 @@ void False::False_SV()
 	max_distance = *std::max_element(distance_list.begin(), distance_list.end());
 
 	//Modifies the max_osu_sv or min_osu_sv
-	min_distance_fix = max_distance / false_gap;
-	max_distance_fix = min_distance / false_gap;
+	lower_distance_fix = max_distance / false_gap;
+	upper_distance_fix = min_distance / false_gap;
 
 	if (DEBUG == true) {
 
 		std::cout << "[DEBUG] min_distance: " << min_distance << std::endl;
 		std::cout << "[DEBUG] max_distance: " << max_distance << std::endl;
-		std::cout << "[DEBUG] min_distance_fix: " << min_distance_fix << std::endl;
-		std::cout << "[DEBUG] max_distance_fix: " << max_distance_fix << std::endl;
+		std::cout << "[DEBUG] lower_distance_fix: " << lower_distance_fix << std::endl;
+		std::cout << "[DEBUG] upper_distance_fix: " << upper_distance_fix << std::endl;
 
 	}
 
@@ -81,23 +79,35 @@ void False::False_SV()
 	std::cout << "Input Average SV ";
 	average_SV = _INPUT_VALIDATOR.Input_Value_D(0.1, 10.0, false);
 
-	std::cout << std::endl;
-
 	//Gets Threshold from user
 	std::cout << "Input Threshold ";
 	threshold = _INPUT_VALIDATOR.Input_Value_D(0, 100, false);
 
-	std::cout << std::endl;
-
 	//Calculates SV cases for extreme cases w.r.t. Maximum and Minimum allowable osu! SV
-	allowed_SV1 = (average_SV - (max_osu_SV * max_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
-	allowed_SV2 = (average_SV - (min_osu_SV * min_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_SV1 = (average_SV - (max_osu_SV * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_SV2 = (average_SV - (min_osu_SV * ((100 - threshold) / 100))) / (threshold / 100);
 
 	if (DEBUG == true) {
 
 		std::cout << "[DEBUG] allowed_SV1: " << allowed_SV1 << std::endl;
 		std::cout << "[DEBUG] allowed_SV2: " << allowed_SV2 << std::endl;
 
+	}
+
+	if (allowed_SV1 > allowed_SV2) {
+
+		allowed_SV1 *= upper_distance_fix;
+	}
+	else {
+		allowed_SV2 *= upper_distance_fix;
+	}
+
+	if (allowed_SV1 < allowed_SV2) {
+
+		allowed_SV1 *= lower_distance_fix;
+	}
+	else {
+		allowed_SV2 *= lower_distance_fix;
 	}
 
 	if (allowed_SV1 < 0.1) {
@@ -131,7 +141,9 @@ void False::False_SV()
 
 	}
 
-	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.SV_VtoC(initial_SV), true);
+	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.SV_VtoC(average_SV), true);
+
+	std::cout << std::endl;
 
 }
 
@@ -160,10 +172,9 @@ void False::False_BPM()
 	double false_gap;
 	double min_distance;
 	double max_distance;
-	double min_distance_fix;
-	double max_distance_fix;
+	double lower_distance_fix;
+	double upper_distance_fix;
 	
-
 	//Takes in input for an infinite amount of notes
 	std::tie(offset_list, key_list) = _INPUT.Input_N_M(100);
 
@@ -189,8 +200,6 @@ void False::False_BPM()
 
 	}
 
-	std::cout << std::endl;
-
 	//Takes in 2 note input to calculate false gap
 	std::cout << "Input the reference gap with 2 notes:" << std::endl;
 	std::tie(false_list, key_list) = _INPUT.Input_N_M(2);
@@ -201,26 +210,36 @@ void False::False_BPM()
 	max_distance = *std::max_element(distance_list.begin(), distance_list.end());
 
 	//Modifies the max_osu_sv or min_osu_sv
-	min_distance_fix = max_distance / false_gap;
-	max_distance_fix = min_distance / false_gap;
-
-	std::cout << std::endl;
+	lower_distance_fix = max_distance / false_gap;
+	upper_distance_fix = min_distance / false_gap;
 
 	//Gets Average BPM from user
 	std::cout << "Input Average BPM ";
 	average_BPM = _INPUT_VALIDATOR.Input_Value_D(0, 100000, false);
 
-	std::cout << std::endl;
-
 	//Gets Threshold from user
 	std::cout << "Input Threshold ";
 	threshold = _INPUT_VALIDATOR.Input_Value_D(0, 100, false);
 
-	std::cout << std::endl;
-
 	//Calculates BPM cases for extreme cases w.r.t. Maximum and Minimum allowable osu! SV
-	allowed_BPM1 = (average_BPM - (max_osu_BPM * max_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
-	allowed_BPM2 = (average_BPM - (min_osu_BPM * min_distance_fix * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_BPM1 = (average_BPM - (max_osu_BPM * ((100 - threshold) / 100))) / (threshold / 100);
+	allowed_BPM2 = (average_BPM - (min_osu_BPM * ((100 - threshold) / 100))) / (threshold / 100);
+
+	if (allowed_BPM1 > allowed_BPM2) {
+
+		allowed_BPM1 *= upper_distance_fix;
+	}
+	else {
+		allowed_BPM2 *= upper_distance_fix;
+	}
+
+	if (allowed_BPM1 < allowed_BPM2) {
+
+		allowed_BPM1 *= lower_distance_fix;
+	}
+	else {
+		allowed_BPM2 *= lower_distance_fix;
+	}
 
 	if (allowed_BPM1 < 0.001) {
 		allowed_BPM1 = 0.001;
@@ -253,6 +272,8 @@ void False::False_BPM()
 
 	}
 
-	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.BPM_VtoC(initial_BPM), false);
+	_COMPILER.Compiler_T(offset_list[offset_list_size - 1], _CONVERTER.BPM_VtoC(average_BPM), false);
+
+	std::cout << std::endl;
 
 }
