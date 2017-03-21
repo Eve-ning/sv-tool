@@ -33,7 +33,7 @@ double Input_Validator::Input_Value_D(double lower_bound, double upper_bound, bo
 		upper_bound_fix = std::to_string(upper_bound);
 	}
 
-	std::cout << "[Double] " << bracket_o << lower_bound << " ~ " << upper_bound << bracket_c << ": ";
+	std::cout << "[Double] " << bracket_o << lower_bound_fix << " ~ " << upper_bound_fix << bracket_c << ": ";
 
 	std::cin >> input;
 
