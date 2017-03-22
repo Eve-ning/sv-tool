@@ -122,8 +122,6 @@ double Flooring::Flooring_S(double fix_offset)
 
 	}
 
-	std::cout << "[DEBUG] fix_offset: " << fix_offset << std::endl;
-
 	return fix_offset;
 	
 }
@@ -254,12 +252,6 @@ std::vector<double> Flooring::Flooring_M(std::vector<double> fix_offset_list) {
 			}
 
 		}
-	}
-
-	for (unsigned int x = 0; x < fix_offset_list_size; x++) {
-
-		std::cout << "[DEBUG] fix_offset_list: " << fix_offset_list[x] << std::endl;
-
 	}
 
 

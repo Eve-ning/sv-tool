@@ -50,7 +50,7 @@ void CAL_manialib::CALIBRATOR_0(bool CONVERTER_B, bool COMPILER_B)
 }
 
 //CALIBRATOR_I is the Calibrator for input functions
-void CAL_manialib::CALIBRATOR_I(bool INPUT_B, bool FLOORING_B)
+void CAL_manialib::CALIBRATOR_I(bool INPUT_B, bool FLOORING_B, bool INPUT_VALIDATOR_B)
 {
 
 	std::cout << "[CALIBRATION_1]" << std::endl;
@@ -112,19 +112,62 @@ void CAL_manialib::CALIBRATOR_I(bool INPUT_B, bool FLOORING_B)
 
 	if (FLOORING_B == true) {
 
-		std::vector<double> fix_list = { 1369,1713,2231 };
+		std::vector<double> fix_list = { 1000,2000,3000 };
 
 		//Flooring Calibration
+		std::cout << "[CALIBRATION _FLOORING_CAL.Flooring_S]" << std::endl <<
+			"Preset:" << std::endl <<
+			"1000,1000,4,1,0,10,1,0" << std::endl <<
+			"STOP" << std::endl << std::endl;
+
+		std::cout << _FLOORING_CAL.Flooring_S(1000) << std::endl;
+
+		std::cout << std::endl;
+
 		std::cout << "[CALIBRATION _FLOORING_CAL.Flooring_M]" << std::endl <<
 			"Preset:" << std::endl <<
-			"1369,344.827586206897,4,3,0,55,1,0" << std::endl <<
+			"1000,1000,4,1,0,10,1,0" << std::endl <<
 			"STOP" << std::endl << std::endl;
+
+		unsigned int fix_list_size = fix_list.size();
+
+		fix_list = _FLOORING_CAL.Flooring_M(fix_list);
+
+		for (unsigned int x = 0; x < fix_list_size; x++) {
+
+			std::cout << fix_list[x] << std::endl;
+
+		}
 
 		std::cout << std::endl;
 
 	}
 	else {
 		std::cout << "[CALIBRATION SKIPPING FLOORING]" << std::endl;
+	}
+
+	if (INPUT_VALIDATOR_B == true) {
+
+		//Input Validator Calibration
+		std::cout << "[CALIBRATION _INPUT_VALIDATOR_CAL.Input_Value_I]" << std::endl <<
+			"Preset:" << std::endl <<
+			"10" << std::endl << std::endl;
+
+		std::cout << _INPUT_VALIDATOR_CAL.Input_Value_I(5, 15, false);
+
+		std::cout << std::endl;
+
+		std::cout << "[CALIBRATION _INPUT_VALIDATOR_CAL.Input_Value_D]" << std::endl <<
+			"Preset:" << std::endl <<
+			"10.5" << std::endl << std::endl;
+
+		std::cout << _INPUT_VALIDATOR_CAL.Input_Value_D(5, 15, false);
+
+		std::cout << std::endl;
+
+	}
+	else {
+		std::cout << "[CALIBRATION SKIPPING INPUT VALIDATOR]" << std::endl;
 	}
 
 	
