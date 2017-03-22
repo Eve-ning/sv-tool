@@ -3,7 +3,7 @@
 #define FLOORING_H
 #include "includes.h"
 #include "Converter.h"
-#include "svtool//Input.h"
+#include "Input.h"
 #include "Compiler.h"
 
 class Flooring {
