@@ -17,7 +17,7 @@ Progress:
 - [x] sine
 - [x] normalizer
 - [x] menu
-- [ ] flooring **!!**
+- [x] flooring **!!**
 - [ ] sequencer **!!**
 - [ ] Wiki Writeup
 - [ ] Video Guides

@@ -1,4 +1,4 @@
-# svtool
+# function
 This is where all the main functions of the SV Tools go
 The planned tools are in **master**
 
