@@ -2,8 +2,6 @@
 #ifndef STUTTER_H
 #define STUTTER_H
 
-#include <iostream>
-#include <vector>
 #include "Converter.h"
 #include "Compiler.h"
 #include "Input.h"

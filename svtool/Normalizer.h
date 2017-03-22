@@ -6,8 +6,6 @@
 #include "Compiler.h"
 #include "Input.h"
 #include "Input_Validator.h"
-#include <iostream>
-#include <string>
 
 class Normalizer {
 

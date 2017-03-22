@@ -2,10 +2,10 @@
 #ifndef COPIER_H
 #define COPIER_H
 
-#include "Converter.h"
-#include "Compiler.h"
-#include "Input.h"
-#include "Input_Validator.h"
+#include "manialib//Converter.h"
+#include "manialib//Compiler.h"
+#include "svtool//Input.h"
+#include "manialib//Input_Validator.h"
 
 class Copier {
 

@@ -6,10 +6,6 @@
 #include "Compiler.h"
 #include "Input.h"
 #include "Input_Validator.h"
-#include <algorithm>
-#include <iostream>
-#include <vector>
-#include <tuple>
 
 class False {
 

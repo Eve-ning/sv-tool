@@ -1,5 +1,5 @@
-#include "Copier.h"
-#include "DEBUG.h"
+#include "svtool//Copier.h"
+#include "manialib//DEBUG.h"
 
 //Copies SVs to notes specified
 //Input NIL

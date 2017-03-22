@@ -1,8 +1,11 @@
 #include "MENU.h"
+#include "DEBUG.h"
 
 int MENU::MENU_F()
 {
+	
 	Input_Validator _INPUT_VALIDATOR;
+	void flooring_prompt(Flooring);
 	int choice;
 	std::vector <std::string> function_list;
 
@@ -67,7 +70,7 @@ int MENU::MENU_F()
 		break;
 	}
 	case 7: {
-		_SINE.Sine_BPM();
+		_SINE.Sine_BPM();	
 		return _MENU;
 		break;
 	}
@@ -103,6 +106,7 @@ int MENU::MENU_C()
 		"Calibrate manialib (Converter)",
 		"Calibrate manialib (Compiler)",
 		"Calibrate manialib (Input)",
+		"Calibrate manialib (Flooring)",
 		"Calibrate svtool (Stutter)",
 		"Calibrate svtool (Copier)",
 		"Calibrate svtool (False)",
@@ -141,48 +145,53 @@ int MENU::MENU_C()
 		break;
 	}
 	case 3: {
-		_CAL_MANIALIB.CALIBRATOR_I(true);
+		_CAL_MANIALIB.CALIBRATOR_I(true, false);
 		return _MENU;
 		break;
 	}
 	case 4: {
-		_CAL_SVTOOL.CALIBRATORF_I(true, false, false, false, false, false);
+		_CAL_MANIALIB.CALIBRATOR_I(false, true);
 		return _MENU;
 		break;
 	}
 	case 5: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, true, false, false, false, false);
+		_CAL_SVTOOL.CALIBRATORF_I(true, false, false, false, false, false);
 		return _MENU;
 		break;
 	}
 	case 6: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, true, false, false, false);
+		_CAL_SVTOOL.CALIBRATORF_I(false, true, false, false, false, false);
 		return _MENU;
 		break;
 	}
 	case 7: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, true, false, false);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, true, false, false, false);
 		return _MENU;
 		break;
 	}
 	case 8: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, true, false);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, true, false, false);
 		return _MENU;
 		break;
 	}
 	case 9: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, false, true);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, true, false);
 		return _MENU;
 		break;
 	}
 	case 10: {
-		_CAL_MANIALIB.CALIBRATOR_0(true, true);
-		_CAL_MANIALIB.CALIBRATOR_I(true);
-		_CAL_SVTOOL.CALIBRATORF_I(true, true, true, true, true, true);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, false, true);
 		return _MENU;
 		break;
 	}
 	case 11: {
+		_CAL_MANIALIB.CALIBRATOR_0(true, true);
+		_CAL_MANIALIB.CALIBRATOR_I(true, true);
+		_CAL_SVTOOL.CALIBRATORF_I(true, true, true, true, true, true);
+		return _MENU;
+		break;
+	}
+	case 12: {
 		return _MENU;
 		break;
 	}
@@ -192,3 +201,41 @@ int MENU::MENU_C()
 	}
 	}
 }
+
+//void flooring_prompt()
+//{
+//
+//	Input _INPUT;
+//	char flooring_choice;
+//	std::vector<double> GLOBAL_TIMINGPOINT_OFFSET_LIST;
+//	std::vector<double> GLOBAL_TIMINGPOINT_CODE_LIST;
+//	std::vector <std::string> GLOBAL_TIMINGPOINT_EXTENSION_LIST;
+//
+//	std::cout << "[NOTICE] If you're planning to use this function, consider setting up Flooring as to make your results more accurate" << std::endl;
+//	std::cout << "Set up flooring? (Y/N): ";
+//
+//	std::cin >> flooring_choice;
+//
+//	while (!(flooring_choice == 'Y' || flooring_choice == 'N') || std::cin.fail()) {
+//
+//		std::cin.clear();
+//		std::cout << "[ERROR] That input wasn't valid" << std::endl << "Try Again: ";
+//		std::cin >> flooring_choice;
+//
+//	}
+//
+//	if (flooring_choice == 'Y') {
+//
+//		std::cout << "Input all of the BPM lines here <ONLY BPM LINES>" << std::endl;
+//
+//		std::tie(GLOBAL_TIMINGPOINT_OFFSET_LIST, GLOBAL_TIMINGPOINT_CODE_LIST, GLOBAL_TIMINGPOINT_EXTENSION_LIST) = _INPUT.Input_T_M(1000);
+//		GLOBAL.setFlooring(GLOBAL_TIMINGPOINT_OFFSET_LIST, GLOBAL_TIMINGPOINT_CODE_LIST, GLOBAL_TIMINGPOINT_EXTENSION_LIST);
+//
+//	}
+//
+//	else {
+//
+//
+//	}
+//
+//}

@@ -1,6 +1,7 @@
 #pragma once
 #ifndef MENU_H
 #define MENU_H
+
 #include "Copier.h"
 #include "False.h"
 #include "MeasureLine.h"
@@ -10,6 +11,7 @@
 #include "CAL_manialib.h"
 #include "CAL_svtool.h"
 #include "Input_Validator.h"
+#include "Flooring.h"
 
 class MENU {
 
@@ -23,6 +25,11 @@ public:
 	//Input NIL
 	//Return (Int) Flag
 	int MENU_C();
+
+	////Prompts for Flooring
+	////Input NIL
+	////Return NIL
+	//void flooring_prompt();
 
 private:
 
@@ -38,8 +45,8 @@ private:
 
 	enum FLAG {
 
-		_QUIT = true,
-		_MENU = false
+		_MENU,
+		_QUIT
 
 	};
 

@@ -1,15 +1,17 @@
 #include "Input.h"
+#include "DEBUG.h"
 
 //Initiates a SINGULAR note input prompt
 //Input NIL
 //Return (Double) Offset, (Int) Key Position
-std::tuple<double, int> Input::Input_N_S()
+std::tuple<double, int> Input::Input_N_S(bool flooring_flag)
 {
 
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Input_N_S" << std::endl;
 	}
 	
+	Flooring _FLOORING;
 	std::string input_raw;
 	std::string input_bracket;
 	std::string input_bar;
@@ -70,6 +72,15 @@ std::tuple<double, int> Input::Input_N_S()
 
 	//----------------DEBUG----------------//
 
+	if (flooring_flag == true) {
+
+		std::cout << std::endl;
+		Flooring _FLOORING;
+		input_offset = _FLOORING.Flooring_S(input_offset);
+		std::cout << std::endl;
+
+	}
+
 	return std::make_tuple(input_offset,input_key);
 
 }
@@ -77,13 +88,14 @@ std::tuple<double, int> Input::Input_N_S()
 //Initiates a MULTIPLE note prompt
 //Input (Int) Number of Inputs
 //Return (VDouble) Offset, (VInt) Key Position
-std::tuple<std::vector<double>, std::vector<int>> Input::Input_N_M(unsigned int count)
+std::tuple<std::vector<double>, std::vector<int>> Input::Input_N_M(unsigned int count, bool flooring_flag)
 {
 
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Input_N_M" << std::endl;
 	}
 
+	Flooring _FLOORING;
 	std::string input_raw;
 	std::string input_bracket;
 	std::string input_bar;
@@ -190,6 +202,17 @@ std::tuple<std::vector<double>, std::vector<int>> Input::Input_N_M(unsigned int 
 
 	//----------------DEBUG----------------//
 
+	if (flooring_flag == true) {
+
+		std::cout << std::endl;
+		Flooring _FLOORING;
+		input_offset_list = _FLOORING.Flooring_M(input_offset_list);
+		std::cout << std::endl;
+
+		unsigned int input_offset_list_size = input_offset_list.size();
+
+	}
+
 	return std::make_tuple(input_offset_list,input_key_list);
 
 }
@@ -197,13 +220,14 @@ std::tuple<std::vector<double>, std::vector<int>> Input::Input_N_M(unsigned int 
 //Initiates a SINGULAR timing point prompt and returns a vector double
 //Input NIL
 //Return (Double) Offset, (Double) Code, (String) Extension
-std::tuple<double, double, std::string> Input::Input_T_S()
+std::tuple<double, double, std::string> Input::Input_T_S(bool flooring_flag)
 {
 
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Input_T_S" << std::endl;
 	}
 
+	Flooring _FLOORING;
 	std::string input_raw;
 
 	double input_offset;
@@ -262,6 +286,15 @@ std::tuple<double, double, std::string> Input::Input_T_S()
 
 	//----------------DEBUG----------------//
 
+	if (flooring_flag == true) {
+
+		std::cout << std::endl;
+		Flooring _FLOORING;
+		input_offset = _FLOORING.Flooring_S(input_offset);
+		std::cout << std::endl;
+
+	}
+
 	return std::make_tuple(input_offset, input_code, input_extension);
 	
 }
@@ -269,13 +302,14 @@ std::tuple<double, double, std::string> Input::Input_T_S()
 //Initiates a MULTIPLE timing point prompt and returns a vector double
 //Input (Int) Number of Inputs
 //Return (VDouble) Offset, (VDouble) Code, (VString) Extension
-std::tuple <std::vector<double>, std::vector<double>, std::vector<std::string>> Input::Input_T_M(unsigned int count)
+std::tuple <std::vector<double>, std::vector<double>, std::vector<std::string>> Input::Input_T_M(unsigned int count, bool flooring_flag)
 {
 
 	if (DEBUG == true) {
 		std::cout << "[DEBUG] Input_T_M" << std::endl;
 	}
 
+	Flooring _FLOORING;
 	std::string input_raw;
 	std::string input_raw_copy;
 
@@ -386,6 +420,15 @@ std::tuple <std::vector<double>, std::vector<double>, std::vector<std::string>> 
 	}
 
 	//----------------DEBUG----------------//
+
+	if (flooring_flag == true) {
+
+		std::cout << std::endl;
+		Flooring _FLOORING;
+		input_offset_list = _FLOORING.Flooring_M(input_offset_list);
+		std::cout << std::endl;
+
+	}
 
 	return std::make_tuple(input_offset_list, input_code_list, input_extension_list);
 

@@ -1,4 +1,5 @@
 #include "Normalizer.h"
+#include "DEBUG.h"
 
 void Normalizer::_Normalizer()
 {

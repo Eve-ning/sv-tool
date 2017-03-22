@@ -1,4 +1,5 @@
 #include "MeasureLine.h"
+#include "DEBUG.h"
 
 void MeasureLine::_MeasureLine()
 {

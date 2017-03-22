@@ -26,7 +26,7 @@ void Sine::Sine_SV()
 
 	//Takes in Starting and Ending offset with 2 notes
 	std::cout << "Input 2 Notes to mark the Start and End respectively:" << std::endl;
-	std::tie(offset_list, key_list) = _INPUT.Input_N_M(2);
+	offset_list = std::get<0>(_INPUT.Input_N_M(2, true));
 
 	start_offset = offset_list[0];
 	end_offset = offset_list[1];
@@ -41,7 +41,7 @@ void Sine::Sine_SV()
 
 	//Takes in Wavelength
 	std::cout << "Input 2 Notes for wavelength: " << std::endl;
-	std::tie(wavelength_offset_list, key_list) = _INPUT.Input_N_M(2);
+	std::tie(wavelength_offset_list, key_list) = _INPUT.Input_N_M(2, true);
 
 	wavelength = wavelength_offset_list[1] - wavelength_offset_list[0];
 
@@ -67,7 +67,7 @@ void Sine::Sine_SV()
 
 			//Premature break if the cycle doesn't complete
 			if (((x / intermediate_values)*wavelength) >= end_offset) {
-				_COMPILER.Compiler_T(end_offset, _CONVERTER.SV_VtoC(average_SV + sin(start_angle + angle)*amplitude), true);
+				_COMPILER.Compiler_T(end_offset, _CONVERTER.SV_VtoC(average_SV + sin(start_angle	+ angle)*amplitude), true);
 				break;
 			}
 
@@ -106,7 +106,7 @@ void Sine::Sine_BPM()
 
 	//Takes in Starting and Ending offset with 2 notes
 	std::cout << "Input 2 Notes to mark the Start and End respectively:" << std::endl;
-	std::tie(offset_list, key_list) = _INPUT.Input_N_M(2);
+	std::tie(offset_list, key_list) = _INPUT.Input_N_M(2, true);
 
 	start_offset = offset_list[0];
 	end_offset = offset_list[1];
@@ -121,7 +121,7 @@ void Sine::Sine_BPM()
 
 	//Takes in Wavelength
 	std::cout << "Input 2 Notes for wavelength: " << std::endl;
-	std::tie(wavelength_offset_list, key_list) = _INPUT.Input_N_M(2);
+	std::tie(wavelength_offset_list, key_list) = _INPUT.Input_N_M(2, true);
 
 	wavelength = wavelength_offset_list[1] - wavelength_offset_list[0];
 

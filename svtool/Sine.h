@@ -6,9 +6,7 @@
 #include "Compiler.h"
 #include "Input.h"
 #include "Input_Validator.h"
-#include <iostream>
-#include <string>
-#include <math.h>
+#include "Flooring.h"
 
 class Sine {
 
