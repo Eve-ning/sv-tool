@@ -2,9 +2,7 @@
 #ifndef Converter_H
 #define Converter_H
 
-#include <string>
-#include <iostream>
-#include "DEBUG.h"
+#include "includes.h"
 
 class Converter {
 

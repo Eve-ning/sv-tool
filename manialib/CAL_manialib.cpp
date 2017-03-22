@@ -45,10 +45,12 @@ void CAL_manialib::CALIBRATOR_0(bool CONVERTER_B, bool COMPILER_B)
 		std::cout << "[CALIBRATION SKIPPING COMPILER]" << std::endl;
 	}
 
+	
+
 }
 
 //CALIBRATOR_I is the Calibrator for input functions
-void CAL_manialib::CALIBRATOR_I(bool INPUT_B)
+void CAL_manialib::CALIBRATOR_I(bool INPUT_B, bool FLOORING_B)
 {
 
 	std::cout << "[CALIBRATION_1]" << std::endl;
@@ -98,7 +100,7 @@ void CAL_manialib::CALIBRATOR_I(bool INPUT_B)
 			"174822,-67.2727272727273,4,1,0,5,0,0" << std::endl <<
 			"175632,-67.8787878787879,3,1,0,5,0,0" << std::endl <<
 			"176435,-68.4848484848485,3,1,0,5,0,0" << std::endl <<
-			"STOP" << std::endl;
+			"STOP" << std::endl << std::endl;
 
 		std::tie(Input_T_M_Offset, Input_T_M_Code, Input_T_M_Extension) = _INPUT_CAL.Input_T_M(3);
 		std::cout << std::endl;
@@ -107,4 +109,23 @@ void CAL_manialib::CALIBRATOR_I(bool INPUT_B)
 	else {
 		std::cout << "[CALIBRATION SKIPPING INPUT]" << std::endl;
 	}
+
+	if (FLOORING_B == true) {
+
+		std::vector<double> fix_list = { 1369,1713,2231 };
+
+		//Flooring Calibration
+		std::cout << "[CALIBRATION _FLOORING_CAL.Flooring_M]" << std::endl <<
+			"Preset:" << std::endl <<
+			"1369,344.827586206897,4,3,0,55,1,0" << std::endl <<
+			"STOP" << std::endl << std::endl;
+
+		std::cout << std::endl;
+
+	}
+	else {
+		std::cout << "[CALIBRATION SKIPPING FLOORING]" << std::endl;
+	}
+
+	
 }

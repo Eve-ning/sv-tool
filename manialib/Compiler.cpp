@@ -1,4 +1,5 @@
 #include "Compiler.h"
+#include "DEBUG.h"
 
 //Compiles parameters into single notes
 //Input (Int) Number of Keys, (Int) Key of note, (Double) Offset, (Optional String) Extension
@@ -81,7 +82,7 @@ void Compiler::Compiler_T(double offset, double code, bool type, std::string ext
 	}
 	
 	std::string extension_copy = extension;
-
+		
 	if (extension_copy == "DEFAULT") {	
 
 		if (DEBUG == true) {
@@ -100,7 +101,8 @@ void Compiler::Compiler_T(double offset, double code, bool type, std::string ext
 	}
 
 	//Printing out the compiled timing point
-	std::cout << offset << "," << code << "," << extension_copy << std::endl;
+	std::cout << std::fixed << std::showpoint;
+	std::cout << std::setprecision(3) << offset << "," << code << "," << extension_copy << std::endl;
 
 	//"4,2,0,15,1,0"
 

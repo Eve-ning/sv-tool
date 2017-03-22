@@ -2,16 +2,11 @@
 #ifndef CAL_MANIALIB_H
 #define CAL_MANIALIB_H
 
-#include <iostream>
-#include <vector>
-#include <tuple>
-#include <string>
+#include "includes.h"
 
 #include "Converter.h"
 #include "Compiler.h"
 #include "Input.h"
-
-
 
 class CAL_manialib {
 
@@ -22,8 +17,8 @@ public:
 	void CALIBRATOR_0(bool, bool);
 
 	//CALIBRATOR_I is the Calibrator for input functions
-	//Input (Bool) Calibrate Input
-	void CALIBRATOR_I(bool);
+	//Input (Bool) Calibrate Input, (Bool) Calibrate Flooring
+	void CALIBRATOR_I(bool, bool);
 
 private:
 

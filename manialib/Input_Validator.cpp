@@ -1,4 +1,5 @@
 #include "Input_Validator.h"
+#include "DEBUG.h"
 
 double Input_Validator::Input_Value_D(double lower_bound, double upper_bound, bool inclusive)
 {

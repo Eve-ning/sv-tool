@@ -1,4 +1,5 @@
 #include "Converter.h"
+#include "DEBUG.h"
 
 //Converts BPM Value to Code
 //Input (Double) Value

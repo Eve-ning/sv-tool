@@ -2,8 +2,7 @@
 #ifndef INPUT_VALIDATOR_H
 #define INPUT_VALIDATOR_H
 
-#include <string>
-#include <iostream>
+#include "includes.h"
 
 class Input_Validator {
 

@@ -2,9 +2,7 @@
 #ifndef COMPILER_H
 #define COMPILER_H
 
-#include <string>
-#include <iostream>
-#include "DEBUG.h"
+#include "includes.h"
 
 class Compiler {
 
