@@ -1,12 +1,12 @@
 #include "CAL_manialib.h"
-#include "CAL_svtool.h"
 #include "Compiler.h"
 #include "Converter.h"
+#include "Flooring.h"
+#include "Input_Validator.h"
+#include "CAL_svtool.h"
 #include "Copier.h"
-#include "DEBUG.h"
 #include "False.h"
 #include "Input.h"
-#include "Input_Validator.h"
 #include "MeasureLine.h"
 #include "MENU.h"
 #include "Normalizer.h"
@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <tuple>
 
+
 //MAIN_PAUSE SETTINGS
 auto MAIN_PAUSE = NULL;
 
@@ -28,14 +29,15 @@ bool CALIBRATION = true;
 void startup(std::string);
 void menu();
 
+
 int main() {	
 
 	std::string version;
-
+	
 	version = "v0.10";
-
 	startup(version);
 	menu();
+
 	std::cout << "Enter anything to Exit..." << std::endl;
 	std::cin >> MAIN_PAUSE;
 
@@ -56,7 +58,7 @@ void menu()
 	MENU _MENU;
 	Input_Validator _INPUT_VALIDATOR;
 
-	bool quit_flag = false;
+	int quit_flag = 0;
 	int choice;
 
 	std::vector<std::string> menu_list;
@@ -65,7 +67,7 @@ void menu()
 		"Functions",
 		"Calibration" };
 	
-	while (quit_flag == false) {
+	while (quit_flag == 0) {
 
 		std::cout << "[MAIN MENU]" << std::endl;
 
@@ -79,7 +81,7 @@ void menu()
 		switch (choice) {
 
 		case 0: {
-			quit_flag = true;
+			quit_flag = 1;
 			break;
 		}
 		case 1: {
@@ -90,7 +92,7 @@ void menu()
 			catch (...) {
 				std::cout << "[ERROR] _MENU.MENU_F() encountered an error" << std::endl;
 				break;
-				quit_flag = false;
+				quit_flag = 0;
 			}
 		}
 		case 2: {
@@ -101,11 +103,11 @@ void menu()
 			catch (...) {
 				std::cout << "[ERROR] _MENU.MENU_C() encountered an error" << std::endl;
 				break;
-				quit_flag = false;
+				quit_flag = 0;
 			}
 		}
 		default: {
-			quit_flag = true;
+			quit_flag = 1;
 			break;
 		}
 
@@ -113,3 +115,5 @@ void menu()
 
 	}
 }
+
+
