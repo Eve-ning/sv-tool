@@ -107,6 +107,7 @@ int MENU::MENU_C()
 		"Calibrate manialib (Compiler)",
 		"Calibrate manialib (Input)",
 		"Calibrate manialib (Flooring)",
+		"Calibrate manialib (Input Validator)",
 		"Calibrate svtool (Stutter)",
 		"Calibrate svtool (Copier)",
 		"Calibrate svtool (False)",
@@ -145,53 +146,58 @@ int MENU::MENU_C()
 		break;
 	}
 	case 3: {
-		_CAL_MANIALIB.CALIBRATOR_I(true, false);
+		_CAL_MANIALIB.CALIBRATOR_I(true, false, false);
 		return _MENU;
 		break;
 	}
 	case 4: {
-		_CAL_MANIALIB.CALIBRATOR_I(false, true);
+		_CAL_MANIALIB.CALIBRATOR_I(false, true, false);
 		return _MENU;
 		break;
 	}
 	case 5: {
-		_CAL_SVTOOL.CALIBRATORF_I(true, false, false, false, false, false);
+		_CAL_MANIALIB.CALIBRATOR_I(false, false, true);
 		return _MENU;
 		break;
 	}
 	case 6: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, true, false, false, false, false);
+		_CAL_SVTOOL.CALIBRATORF_I(true, false, false, false, false, false);
 		return _MENU;
 		break;
 	}
 	case 7: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, true, false, false, false);
+		_CAL_SVTOOL.CALIBRATORF_I(false, true, false, false, false, false);
 		return _MENU;
 		break;
 	}
 	case 8: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, true, false, false);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, true, false, false, false);
 		return _MENU;
 		break;
 	}
 	case 9: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, true, false);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, true, false, false);
 		return _MENU;
 		break;
 	}
 	case 10: {
-		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, false, true);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, true, false);
 		return _MENU;
 		break;
 	}
 	case 11: {
-		_CAL_MANIALIB.CALIBRATOR_0(true, true);
-		_CAL_MANIALIB.CALIBRATOR_I(true, true);
-		_CAL_SVTOOL.CALIBRATORF_I(true, true, true, true, true, true);
+		_CAL_SVTOOL.CALIBRATORF_I(false, false, false, false, false, true);
 		return _MENU;
 		break;
 	}
 	case 12: {
+		_CAL_MANIALIB.CALIBRATOR_0(true, true);
+		_CAL_MANIALIB.CALIBRATOR_I(true, true, true);
+		_CAL_SVTOOL.CALIBRATORF_I(true, true, true, true, true, true);
+		return _MENU;
+		break;
+	}
+	case 13: {
 		return _MENU;
 		break;
 	}

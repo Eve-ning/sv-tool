@@ -33,7 +33,7 @@ void CAL_svtool::CALIBRATORF_I(bool STUTTER_B, bool COPIER_B, bool FALSE_B, bool
 
 	if (COPIER_B == true) {
 
-		std::cout << "[CALIBRATION _COPIER_CAL._Copier()]" << std::endl <<
+		std::cout << "[CALIBRATION _COPIER_CAL._Copier]" << std::endl <<
 			"Preset:" << std::endl <<
 			"00:01:000 (1000|3,1500|3,2000|3,2500|3,3000|3) - " << std::endl <<
 			"100,-50,4,2,0,15,0,0" << std::endl <<
@@ -111,9 +111,13 @@ void CAL_svtool::CALIBRATORF_I(bool STUTTER_B, bool COPIER_B, bool FALSE_B, bool
 		std::cout << "[CALIBRATION _SINE_CAL.Sine_SV]" << std::endl <<
 			"Preset:" << std::endl <<
 			"00:01:000 (1000|3,5000|3) - " << std::endl <<
+			"1000,1000,4,1,0,10,1,0" << std::endl <<
+			"STOP" << std::endl <<
 			"1" << std::endl <<
 			"90" << std::endl <<
 			"00:01:000 (1000|3,3000|3) - " << std::endl <<
+			"1000,1000,4,1,0,10,1,0" << std::endl <<
+			"STOP" << std::endl <<
 			".5" << std::endl <<
 			"8" << std::endl << std::endl;
 
@@ -122,9 +126,13 @@ void CAL_svtool::CALIBRATORF_I(bool STUTTER_B, bool COPIER_B, bool FALSE_B, bool
 		std::cout << "[CALIBRATION _SINE_CAL.Sine_BPM]" << std::endl <<
 			"Preset:" << std::endl <<
 			"00:01:000 (1000|3,5000|3) - " << std::endl <<
+			"1000,1000,4,1,0,10,1,0" << std::endl <<
+			"STOP" << std::endl <<
 			"120" << std::endl <<
 			"90" << std::endl <<
 			"00:01:000 (1000|3,3000|3) - " << std::endl <<
+			"1000,1000,4,1,0,10,1,0" << std::endl <<
+			"STOP" << std::endl <<
 			"60" << std::endl <<
 			"8" << std::endl << std::endl;
 
