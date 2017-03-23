@@ -16,5 +16,4 @@ Progress:
 - [x] flooring **!!**
 - [ ] sequencer **!!**
 - [x] Wiki Writeup
-- [ ] Video Guides
-- [ ] Finalization (Open for Pulls)
+- [ ] Finalization (Open for Pulls and Suggestions)
